@@ -30,7 +30,7 @@ class LogSenderHandler(InboundMailHandler):
     self.logme("The email was addressed to: " + str.join(str(mail_message.to), ', '))
 
     try:
-      self.logme("The email was CC-ed to: " + str.join(mail_message.cc, ', '))
+      self.logme("The email was CC-ed to: " + str.join(str(mail_message.cc), ', '))
     except exceptions.AttributeError :
       self.logme("The email has no CC-ed recipients")
 
