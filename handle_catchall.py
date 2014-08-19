@@ -46,7 +46,11 @@ class LogSenderHandler(InboundMailHandler):
       decoded_html = body.decode()
       self.logme("content_type: " + content_type)
       self.logme("decoded_html: " + decoded_html)
-      plaintext_bodies
+      
+    allBodies = "";
+    for body in plaintext_bodies:
+      allBodies = allBodies + " " + body[1].decode()
+    self.logme("plaintext_bodies: " + allBodies);
 
     attachments = []
     try:
@@ -61,9 +65,7 @@ class LogSenderHandler(InboundMailHandler):
     self.logme("number of attachments: " + str(len(attachments)))
 
     for filename, content in attachments:
-      #logging.info("plaintext_bodies: " + plaintext_bodies)
       self.logme("filename: " + filename)
-      content
 
     self.logme("--------------------------------")
     self.send_mail_()
